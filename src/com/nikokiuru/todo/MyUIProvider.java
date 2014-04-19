@@ -1,4 +1,4 @@
-package com.example.tokka;
+package com.nikokiuru.todo;
 
 import com.vaadin.server.UIClassSelectionEvent;
 import com.vaadin.server.UIProvider;
@@ -12,7 +12,7 @@ public class MyUIProvider extends UIProvider {
     public Class<? extends UI> getUIClass(UIClassSelectionEvent event) {
         String userAgent = event.getRequest().getHeader("user-agent").toLowerCase();
         if (overrideMobileUA() || userAgent.contains("mobile")) {
-            return MyTouchKitUI.class;
+            return AppMainUI.class;
         } else {
             return MyFallbackUI.class;
         }

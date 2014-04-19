@@ -1,4 +1,4 @@
-package com.example.tokka;
+package com.nikokiuru.todo;
 
 
 import com.vaadin.addon.touchkit.extensions.TouchKitIcon;
@@ -15,16 +15,16 @@ import com.vaadin.ui.UI;
  * The UI's "main" class
  */
 @SuppressWarnings("serial")
-@Widgetset("com.example.tokka.gwt.AppWidgetSet")
+@Widgetset("com.nikokiuru.todo.gwt.AppWidgetSet")
 @Theme("touchkit")
-public class MyTouchKitUI extends UI {
+public class AppMainUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         final TabBarView tabBarView = new TabBarView();
         final NavigationManager navigationManager = new NavigationManager();
         navigationManager.setCaption("Tab 1");
-        navigationManager.setCurrentComponent(new MenuView());
-        Tab tab; 
+        //navigationManager.setCurrentComponent(new MenuView());
+        Tab tab;
         tab = tabBarView.addTab(navigationManager);
         TouchKitIcon.book.addTo(tab);
         tab = tabBarView.addTab(new Label("Tab 2"), "Tab 2");

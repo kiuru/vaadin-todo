@@ -1,4 +1,4 @@
-package com.example.tokka;
+package com.nikokiuru.todo;
 
 import com.vaadin.addon.touchkit.ui.NavigationButton;
 import com.vaadin.addon.touchkit.ui.NavigationButton.NavigationButtonClickEvent;

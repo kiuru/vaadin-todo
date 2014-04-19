@@ -1,4 +1,4 @@
-package com.example.tokka;
+package com.nikokiuru.todo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
