@@ -37,7 +37,9 @@ public class ListView extends NavigationView {
         submitButton.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                Notification.show("New task added!");
+                TodoManager.addTodoList(task.getValue());
+                updatelist();
+                Notification.show("New list " + task.getValue() + " added!");
             }
         });
         content.addComponent(submitButton);
