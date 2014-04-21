@@ -20,7 +20,7 @@ public class TodoList {
 		this.name = name;
 	}
 	
-	public ArrayList<TodoItem> getTodo() {
+	public ArrayList<TodoItem> getTodoItems() {
 		return todoItem;
 	}
 	
