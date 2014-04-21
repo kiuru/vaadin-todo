@@ -24,8 +24,8 @@ public class TodoList {
 		return todoItem;
 	}
 	
-	public void addTodoItem(TodoItem todoItem){
-		this.todoItem.add(todoItem);
+	public void addTodoItem(String name){
+		this.todoItem.add(new TodoItem(name));
 	}
 	
 }
