@@ -3,10 +3,11 @@ package com.nikokiuru.todo;
 import java.util.ArrayList;
 
 import com.vaadin.addon.touchkit.ui.NavigationButton;
+import com.vaadin.addon.touchkit.ui.NavigationButton.NavigationButtonClickEvent;
+import com.vaadin.addon.touchkit.ui.NavigationButton.NavigationButtonClickListener;
 import com.vaadin.addon.touchkit.ui.NavigationView;
 import com.vaadin.addon.touchkit.ui.VerticalComponentGroup;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
@@ -19,7 +20,15 @@ public class ListView extends NavigationView {
 	
     public ListView() {
         setCaption("Todo List");
-        
+    	TodoManager.Initialize();
+    	updatelist();
+    	setContent(content);
+    };
+    
+	private void updatelist() {
+		content.removeAllComponents();
+		
+		// New task form
         final TextField task = new TextField("New task");
         task.setInputPrompt("Enter new task...");
         content.addComponent(task);
@@ -31,23 +40,26 @@ public class ListView extends NavigationView {
                 Notification.show("New task added!");
             }
         });
+        content.addComponent(submitButton);
         
-        setContent(new CssLayout(content, submitButton));
-        
-    	TodoManager.Initialize();
-    	updatelist();
-    };
-    
-	private void updatelist() {
-		//content.removeAllComponents();
+        // Todo lists
 		ArrayList<TodoList> todolists = TodoManager.getTodoLists();
 		
 		for (int i = 0; i < todolists.size(); i++) {
-			TodoList todoList = todolists.get(i);
+			final TodoList todoList = todolists.get(i);
 			final NavigationButton button = new NavigationButton(todoList.getName());
 			button.setData(todoList);
 			content.addComponent(button);
+			
+			button.addClickListener(new NavigationButtonClickListener() {
+				@Override
+				public void buttonClick(NavigationButtonClickEvent event) {
+					getNavigationManager().navigateTo(new ItemView(todoList));
+				}
+			});
+			
 		}
+		
 	}
 
 }
